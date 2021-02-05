@@ -14,10 +14,6 @@ import java.time.LocalDateTime;
 @Table(name = "T_Operation")
 public class Operation {
 
-    public Long getOperationID() {
-        return operationID;
-    }
-
     @Id
     @GeneratedValue
     @Column(name = "operation_id")
@@ -33,4 +29,13 @@ public class Operation {
     @Column(name = "date")
     private LocalDateTime date = LocalDateTime.now();
 
+    public StringBuilder printOperation() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(date);
+        stringBuilder.append("    | ");
+        stringBuilder.append(amount);
+        stringBuilder.append("      | ");
+        stringBuilder.append(type);
+        return stringBuilder;
+    }
 }

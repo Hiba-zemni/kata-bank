@@ -17,6 +17,8 @@ import java.util.Optional;
 @Transactional
 public class AccountServiceImpl implements AccountService {
 
+    private static final String HEADER = " date               | amount   | type";
+
     @Autowired
     private AccountRepository accountRepository;
 
@@ -31,6 +33,15 @@ public class AccountServiceImpl implements AccountService {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new NotExistAccountException("Please provide a valid accountId"));
         return Optional.of(account.getOperationList());
+    }
+
+    @Override
+    public void printStatment(Account account) {
+        List<Operation> operationList = account.getOperationList();
+        System.out.println(HEADER);
+        for (Operation operation: operationList) {
+            System.out.println(operation.printOperation());
+        }
     }
 
 }

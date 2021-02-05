@@ -25,7 +25,7 @@ public class Account {
     @Id
     @GeneratedValue
     @Column(name = "account_id")
-    private Long accountId;
+    private Long Id;
 
     @Column(name = "account_number", nullable = false)
     private Long accountNumber;
