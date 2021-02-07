@@ -32,6 +32,7 @@ public class AccountServiceImpl implements AccountService {
     public Optional<List<Operation>> getAllOperationsByAccountId(Long accountId) throws NotExistAccountException {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() -> new NotExistAccountException("Please provide a valid accountId"));
+        printStatment(account);
         return Optional.of(account.getOperationList());
     }
 
